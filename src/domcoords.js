@@ -44,6 +44,7 @@ export function scrollRectIntoView(view, rect, startDOM) {
 // will be used to make sure the visible viewport remains stable even
 // when the size of the content above changes.
 export function storeScrollPos(view) {
+  if (document.body.style.overflowAnchor != null) return null
   let rect = view.dom.getBoundingClientRect(), startY = Math.max(0, rect.top)
   let doc = view.dom.ownerDocument
   let refDOM, refTop
