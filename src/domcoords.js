@@ -43,8 +43,10 @@ export function scrollRectIntoView(view, rect, startDOM) {
 // the top position of an element near the top of the editor, which
 // will be used to make sure the visible viewport remains stable even
 // when the size of the content above changes.
+
+const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)
 export function storeScrollPos(view) {
-  if (document.body.style.overflowAnchor != null) return null
+  if (isChrome) return null
   let rect = view.dom.getBoundingClientRect(), startY = Math.max(0, rect.top)
   let doc = view.dom.ownerDocument
   let refDOM, refTop
